@@ -1,5 +1,4 @@
-Channel = (options) ->
-  new Skull.Model("Channel", options)
+Channel = Skull.Model.extend({})
 
 ChannelsCollection = Backbone.Collection.extend({
    model: Channel,
@@ -9,5 +8,5 @@ ChannelsCollection = Backbone.Collection.extend({
 $ ->
   channels = new ChannelsCollection()
   $.when(channels.fetch()).then (data) ->
-    cv = Skull.View({el: $("#channel"), model: _.head(channels.models)})
+    cv = new Skull.View({el: $("#channel"), model: _.head(channels.models)})
     cv.render()

@@ -3,23 +3,34 @@ ns.Accessors =
   idAccessors: ->
     $(@el).children("[id]").each((idx, elem) =>
       @["$#{elem.id}"] = $(elem))
-    @.$container = $(@el)
 
 ns.Model = class Model extends Backbone.Model
   _to_locals: ->
     _.extend({cid: @cid}, @attributes)
 
-ns.View = class View extends Backbone.View
-  constructor: ->
+
+ns.Cell = class Cell extends Backbone.View
+  initialize: ->
+    super
     _.extend(@, arg) for arg in arguments
+
+  render: ->
+    $(@el).html(_.template(@template.html())(@model._to_locals()))
+    @
+
+ns.View = class View extends ns.Cell
+  initialize: ->
+    super
     _.extend(@, ns.Accessors)
     @.idAccessors()
 
-  render: ->
-    html = _.template(@$template.html())(@model._to_locals())
-    @$container.html(html)
+ns.CollectionView = class View extends ns.View
 
-    super
+  render: ->
+    content = _(@model).each (x) =>
+      cell = new Cell(template: @partial, model: x)
+      cell.render()
+      @el.append(cell.el)
     @
 
 root = @

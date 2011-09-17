@@ -22,9 +22,9 @@ module Schedule
 
     module Cached
       def data
-        unless result = @redis.get(cache_key) then
+        unless result = @cache.get(cache_key) then
           result = super
-          @redis.set(cache_key, result)
+          @cache.set(cache_key, result)
         end
         result
       end
@@ -34,9 +34,9 @@ module Schedule
       end
     end
 
-    def initialize(redis, cached=true)
+    def initialize(cache, cached=true)
       if cached
-        @redis = redis
+        @cache = cache
         class << self
           include Cached
         end

@@ -12,20 +12,26 @@ module Schedule::Italy
           id: "#{id}/#{ch["description"].gsub(" ", "_").underscore}",
           name: ch["description"],
           programs: ch["prg"].map do |prg|
-            {
-              start: prg["orainizio"],
-              end: prg["orainizio"],
-              type: map_kind(prg["tipologia"]),
-              duration: prg["durata"],
-              title: prg["titolo"],
-              description: nil,
-              link: prg["linkScheda"],
-              year: decode_dashes(prg["anno"]),
-              country: decode_dashes(prg["paese"])
-            }
+            program_to_json(prg)
           end
         }
       end
+    end
+
+    def program_to_json(prg)
+      {
+        start: prg["orainizio"],
+        end: prg["orainizio"],
+        type: map_kind(prg["tipologia"]),
+        duration: prg["durata"],
+        title: prg["titolo"],
+        description: nil,
+        link: prg["linkScheda"],
+        year: decode_dashes(prg["anno"]),
+        country: decode_dashes(prg["paese"])
+      }
+    rescue Exception => e
+      {}
     end
 
     def decode_dashes(string)

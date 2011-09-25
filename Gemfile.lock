@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/sinatra/sinatra-contrib.git
-  revision: 563b24200ec8d824b029146d57b5667ef93e10bc
+  revision: 6ac7b368ba290de28dcdf31a8abd3b657e6670a8
   specs:
     sinatra-contrib (1.3.0)
       backports (>= 2.0)
@@ -12,11 +12,11 @@ GIT
 
 GIT
   remote: https://github.com/sinatra/sinatra.git
-  revision: f40e43d2b09ebdfa59311a7a85e5548a5759b9f5
+  revision: c0a9b3368e3c650905b25d535379524ac6fc7b53
   specs:
     sinatra (1.3.0)
       rack (~> 1.3)
-      rack-protection (~> 1.0)
+      rack-protection (~> 1.1)
       tilt (~> 1.3)
 
 GEM
@@ -29,16 +29,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.1.2)
-    escape_utils (0.2.3)
     eventmachine (0.12.10)
-    execjs (1.2.4)
+    execjs (1.2.9)
       multi_json (~> 1.0)
     hike (1.2.1)
     i18n (0.6.0)
     multi_json (1.0.3)
-    rack (1.3.2)
-    rack-protection (1.0.0)
-      escape_utils
+    rack (1.3.3)
+    rack-protection (1.1.0)
       rack
     rack-test (0.6.1)
       rack (>= 1.0)
@@ -49,7 +47,7 @@ GEM
       rack (~> 1.0)
       tilt (!= 1.3.0, ~> 1.1)
     tilt (1.3.3)
-    uglifier (1.0.2)
+    uglifier (1.0.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
 

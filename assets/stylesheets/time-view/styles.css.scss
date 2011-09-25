@@ -1,0 +1,15 @@
+#channels-container {
+  overflow: hidden;
+}
+
+#channels {
+  width: 900000px;
+}
+
+#channels .channel {
+}
+
+#channels .channel .slice {
+  display: inline;
+  background-color: red;
+}
